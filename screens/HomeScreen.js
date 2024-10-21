@@ -10,7 +10,7 @@ const HomeScreen = () => {
 
     useLayoutEffect(() => {
         navigation.setOptions({ headerShown: false });
-    })
+    }, [])
 
     return (
         <SafeAreaView className="bg-white flex-1 relative">
