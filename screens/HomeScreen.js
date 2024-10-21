@@ -1,4 +1,5 @@
 import React, {useLayoutEffect} from 'react';
+import * as Animatable from 'react-native-animatable';
 import { View, Text, StyleSheet, FlatList, ScrollView, Image, TouchableOpacity } from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import {SafeAreaView} from "react-native-safe-area-context";
@@ -33,18 +34,24 @@ const HomeScreen = () => {
             <View className="w-[300px] h-[300px] bg-amber-500 rounded-full absolute -bottom-28 -left-40"></View>
             {/*Раздел со мной*/}
             <View className="flex-1 relative items-center justify-center">
-                <Image
+                <Animatable.Image
+                    animation="fadeIn"
+                    easing="ease-in-out"
                     source={require('../assets/me.png')}
                     className="w-full h-full object-cover mt-32"
                 />
                 {/*Последний раздел*/}
-                <View className="absolute bottom-20 w-24 h-24 border-l-2 border-r-2 border-t-4 border-[white] rounded-full justify-center items-center">
-                    <TouchableOpacity>
-                        <View className="w-20 h-20 items-center justify-center rounded-full bg-white">
-                            <Text className="font-semibold text-[30px]">GO</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("Discover")}
+                    className="absolute bottom-20 w-24 h-24 border-l-2 border-r-2 border-t-4 border-[white] rounded-full justify-center items-center">
+                    <Animatable.View
+                        animation="pulse"
+                        easing="ease-in-out"
+                        iterationCount="infinite"
+                        className="w-20 h-20 items-center justify-center rounded-full bg-white">
+                        <Text className="font-semibold text-[30px]">GO</Text>
+                    </Animatable.View>
+                </TouchableOpacity>
             </View>
 
         </SafeAreaView>
